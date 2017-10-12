@@ -35,8 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/GraphFromImage.o \
-	${OBJECTDIR}/ex1.o
+	${OBJECTDIR}/GraphUsingAdjacencyLists.o \
+	${OBJECTDIR}/Util.o \
+	${OBJECTDIR}/ex2.o
 
 
 # C Compiler Flags
@@ -57,21 +58,26 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asd2_labo1.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asd2_labo1_p2.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asd2_labo1.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asd2_labo1_p2.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asd2_labo1 ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asd2_labo1_p2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/GraphFromImage.o: GraphFromImage.cpp
+${OBJECTDIR}/GraphUsingAdjacencyLists.o: GraphUsingAdjacencyLists.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GraphFromImage.o GraphFromImage.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GraphUsingAdjacencyLists.o GraphUsingAdjacencyLists.cpp
 
-${OBJECTDIR}/ex1.o: ex1.cpp
+${OBJECTDIR}/Util.o: Util.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ex1.o ex1.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Util.o Util.cpp
+
+${OBJECTDIR}/ex2.o: ex2.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ex2.o ex2.cpp
 
 # Subprojects
 .build-subprojects:
