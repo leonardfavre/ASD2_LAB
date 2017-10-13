@@ -52,7 +52,7 @@ public:
             auto names = split(line,'/');
             for( auto name : names ) 
             {          
-                std::cout << name << " "; //on affiche le contenu du fichier, vous devrez commencer a remplir le graphe ici
+                //std::cout << name << " "; //on affiche le contenu du fichier, vous devrez commencer a remplir le graphe ici
                 //test juste que name n'appartienne pas encore a la map avant l'ajout
                 if(!contains(name)){
                     sommet_symbole.insert(std::pair<int, std::string>(cnt,name));
@@ -76,8 +76,7 @@ public:
         {
             auto names = split(line, '/');
             nomFilm = *names.begin();
-            
-            names++;
+           
             for(auto name = names.begin(); name != names.end(); name++){
                 g->addEdge(index(nomFilm), index(*name));   
             }
