@@ -53,7 +53,8 @@ public:
             for( auto name : names ) 
             {          
                 //std::cout << name << " "; //on affiche le contenu du fichier, vous devrez commencer a remplir le graphe ici
-                //test juste que name n'appartienne pas encore a la map avant l'ajout
+                
+                //test que name n'appartienne pas encore a la map avant l'ajout
                 if(!contains(name)){
                     sommet_symbole.insert(std::pair<int, std::string>(cnt,name));
                     symbole_sommet.insert(std::pair<std::string, int>(name,cnt));
@@ -66,12 +67,14 @@ public:
         
         
         /* A IMPLEMENTER */
+        //creation du graph avec un nombre de sommet égal au nombre de nom de film et d'acteurs
         g = new Graph(cnt);
         
         std::string nomFilm;
         
         s.open(filename);
         
+        //creation des arrêtes du graph
         while (std::getline(s, line))
         {
             auto names = split(line, '/');
@@ -110,6 +113,7 @@ public:
         std::vector<std::string> vecteur_adjacence;
         std::list<int> liste_adjacence = g->adjacent(index(name));
         
+        //conversion des adjacents de int en string
         for (auto i = liste_adjacence.begin(); i != liste_adjacence.end();++i){
             vecteur_adjacence.push_back(this->name(*i));
         }
