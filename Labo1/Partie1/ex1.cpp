@@ -3,7 +3,6 @@
  * Author: Olivier Cuisenaire
  *
  * Created on 2 oct. 2014, 11:19:03
- * modif
  */
 
 #include <stdlib.h>
@@ -28,6 +27,9 @@ int main(int argc, char** argv) {
     DFS<GraphFromImage> dfs(G);
 
     //Question BONUS: Pourquoi n'utilisons-nous pas la methode visite pour parcourir l'image ?
+    /* Comme nous avons un graphe avec beaucoup de sommets (chaque pixel de l'image), on risque un stack overflow
+     * avec tous les appels récursifs de la méthode visit.
+     * La pile utilisée dans la méthode iterativeVisit a une taille "contrôlée" : elle ne dépassera jamais le nombre de sommets (moins le 1er) */
     
     //on colore la carotte
     int x = 250, y = 400;
