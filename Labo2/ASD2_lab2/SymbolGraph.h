@@ -3,6 +3,10 @@
  * Author: Olivier Cuisenaire
  *
  * Created on 26. septembre 2014, 15:08
+ 
+ * Modifié le 05.11.2017
+ * par Guillaume Schranz, Matthieu Girard et Léonard Favre
+ * 
  */
 
 #ifndef SYMBOLGRAPH_OC2017_H
@@ -36,7 +40,7 @@ public:
        
     //creation du SymbolGraph a partir du fichier movies.txt
     SymbolGraph(const std::string& filename, char separateur) {         
-        //lecture du fichier, ligne par ligne puis element par element (separe par des /)
+        //lecture du fichier, ligne par ligne puis element par element (separe par un separateur)
         std::string line;
         int cnt=0; 
 
@@ -110,7 +114,7 @@ public:
     const Graph& G() const {
         return *g; 
     }
-    //MODIF
+    
     void affichage(){
         for(int i = 0; i < g->V(); ++i) {
             list<int> f = g->adjacent(i);

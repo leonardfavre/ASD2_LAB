@@ -2,7 +2,10 @@
  * File:   DirectedCycle.h
  * Author: Olivier Cuisenaire
  * Created on 08. octobre 2014, 10:46
- *
+ * 
+ * Modifié le 05.11.2017
+ * par Guillaume Schranz, Matthieu Girard et Léonard Favre
+ * 
  * A implementer
  * Classe permettant la detection de cycle sur un graphe oriente
  */
@@ -67,8 +70,7 @@ private:
             }
         }
         empile[v] = false;
-    }
-	
+    }	
 };
 
 #endif

@@ -3,7 +3,10 @@
  * Author: Cuisenaire
  * Labo 2
  * Created on 3. novembre 2014, 08:23
- * modifié le : 5 novembre 2017
+ * 
+ * Modifié le 05.11.2017
+ * par Guillaume Schranz, Matthieu Girard et Léonard Favre
+ * 
  */
 
 
@@ -92,8 +95,10 @@ int main(int argc, const char * argv[]) {
     const char SEPARATEUR = ',';
     const string FILENAME = "prerequis.txt";
     const string FILENAME2 = "prerequis2.txt";
+    
     cout << "Debut du test du fichier " << FILENAME << endl;
     test(FILENAME, SEPARATEUR);
+    
     cout << "\nDebut du test du fichier " << FILENAME2 << endl;
     test(FILENAME2, SEPARATEUR);
     
