@@ -28,7 +28,6 @@ private:
 public:
     //constructeur
     TopologicalSort(const GraphType & g) {
-        /* A IMPLEMENTER */
         /* vous devez verifier la presence d'un cycle, auquel cas il faut lancer une  GraphNotDAGException*/
         DirectedCycle<GraphType> directedCycle(g);
         
@@ -47,8 +46,6 @@ public:
     
     //tableau contenant l'ordre de parcours des indexes des sommets dans le graphe
     const std::vector<int>& Order() {
-        /* A IMPLEMENTER */
-        //return ...
         g->visitGraph([](int v){}, [this](int v){
             trie.push_back(v);
         });

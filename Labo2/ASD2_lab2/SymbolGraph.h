@@ -39,12 +39,7 @@ public:
         //lecture du fichier, ligne par ligne puis element par element (separe par des /)
         std::string line;
         int cnt=0; 
-/*
- if(line.find("\r") != std::string::npos){
-                line.erase(line.size() - 1);
-            }
-        }
- */
+
         std::ifstream s(filename);
         while (std::getline(s, line))
         {

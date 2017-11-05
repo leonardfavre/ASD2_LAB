@@ -25,7 +25,6 @@ private:
 public:
     //constructeur
     DirectedCycle(const GraphType& g) {
-        /* A IMPLEMENTER */
         marque.resize(g.V());
         empile.resize(g.V());
         listeDeCycle.resize(g.V());
@@ -35,7 +34,6 @@ public:
 
     //indique la presence d'un cycle
     bool HasCycle() {
-        /* A IMPLEMENTER */
         trouveCycle = false; 
         
         for (int i = 0; i < g->V(); ++i){
@@ -47,7 +45,6 @@ public:
 
     //liste les indexes des sommets formant une boucle
     std::list<int> Cycle() {
-        /* A IMPLEMENTER */
         list<int> cycle;
         for(int i = 0; i < listeDeCycle.size(); i++){
             if (listeDeCycle[i])
@@ -56,6 +53,7 @@ public:
         return cycle;
     }
 private:
+    //Algorithme du cours
     bool DetectionCycle(int v){
         marque[v] = true;
         empile[v] = true; 
