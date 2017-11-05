@@ -19,7 +19,7 @@ private:
     vector<bool> empile;
     vector<bool> listeDeCycle;
     bool trouveCycle = false;
-    const GraphType* g;
+    list<int> cycle;    
     
 	
 public:
@@ -28,42 +28,38 @@ public:
         marque.resize(g.V());
         empile.resize(g.V());
         listeDeCycle.resize(g.V());
+                
+        for (int i = 0; i < g.V(); i++) {
+            DetectionCycle(i, g);
+        }
         
-        this->g = &g;        
+        for(int i = 0; i < listeDeCycle.size(); i++){
+            if (listeDeCycle[i])
+                cycle.push_back(i);
+        }        
     }
 
     //indique la presence d'un cycle
     bool HasCycle() {
-        trouveCycle = false; 
-        
-        for (int i = 0; i < g->V(); ++i){
-            DetectionCycle(i);
-            if (trouveCycle) return true;
-        }
-        return false;
+        return trouveCycle;
     }
 
     //liste les indexes des sommets formant une boucle
     std::list<int> Cycle() {
-        list<int> cycle;
-        for(int i = 0; i < listeDeCycle.size(); i++){
-            if (listeDeCycle[i])
-                cycle.push_back(i);
-        }
         return cycle;
     }
 private:
     //Algorithme du cours
-    bool DetectionCycle(int v){
+    bool DetectionCycle(int v, const GraphType& g){
         marque[v] = true;
         empile[v] = true; 
-        
-        for(auto w : g->adjacent(v)){
+
+        for(auto w : g.adjacent(v)){
             if(trouveCycle){
                 return true; 
             }
             else if (!marque[w]){
-                DetectionCycle(w);
+                DetectionCycle(w, g);
             }
             else if(empile[w]){
                 trouveCycle = true;

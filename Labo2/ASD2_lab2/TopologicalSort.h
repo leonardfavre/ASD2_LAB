@@ -29,9 +29,9 @@ public:
     //constructeur
     TopologicalSort(const GraphType & g) {
         /* vous devez verifier la presence d'un cycle, auquel cas il faut lancer une  GraphNotDAGException*/
-        DirectedCycle<GraphType> directedCycle(g);
-        
         try{
+            DirectedCycle<GraphType> directedCycle(g);
+
             if (directedCycle.HasCycle()){
                 list<int> cycle = directedCycle.Cycle();
                 
@@ -42,14 +42,15 @@ public:
             throw e;
         }
         this->g = new DFS<GraphType> (g);
+        
+        g->visitGraph([](int v){}, [this](int v){
+            trie.push_back(v);
+        });
+        std::reverse(trie.begin(),trie.end());        
     }
     
     //tableau contenant l'ordre de parcours des indexes des sommets dans le graphe
     const std::vector<int>& Order() {
-        g->visitGraph([](int v){}, [this](int v){
-            trie.push_back(v);
-        });
-        std::reverse(trie.begin(),trie.end());
         return trie;
     }
     
