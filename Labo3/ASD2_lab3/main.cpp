@@ -17,13 +17,19 @@
 #include "EdgeWeightedGraph.h"
 #include "EdgeWeightedDiGraph.h"
 
+#include "RoadDiGraphWrapper.h"
+#include "RoadGraphWrapper.h"
+
 using namespace std;
+
+//Les differentes "fonction de cout"
+
 
 // Calcule et affiche le plus court chemin de la ville depart a la ville arrivee
 // en passant par le reseau routier rn. Le critere a optimiser est la distance.
-
 void PlusCourtChemin(const string& depart, const string& arrivee, RoadNetwork& rn) {   
     /* A IMPLEMENTER */
+       
 }
 
 // Calcule et affiche le plus rapide chemin de la ville depart a la ville arrivee via la ville "via"
@@ -45,7 +51,6 @@ void ReseauLeMoinsCher(RoadNetwork &rn) {
 // compare les algorithmes Dijkstra et BellmanFord pour calculer les plus courts chemins au
 // sommet 0 dans le graphe defini par filename.
 // a utiliser pour tester votre implementation de Dijkstra
-
 void testShortestPath(string filename)
 {
     cout << "Testing " << filename << endl;
@@ -80,11 +85,11 @@ void testShortestPath(string filename)
 int main(int argc, const char * argv[]) {
     
     testShortestPath("tinyEWD.txt");
-    testShortestPath("mediumEWD.txt");
-    testShortestPath("1000EWD.txt");
-    testShortestPath("10000EWD.txt");
+    //testShortestPath("mediumEWD.txt");
+    //testShortestPath("1000EWD.txt");
+    //testShortestPath("10000EWD.txt");
     
-    RoadNetwork rn("reseau.txt");
+   /* RoadNetwork rn("reseau.txt");
     
     cout << "1. Chemin le plus court entre Geneve et Emmen" << endl;
     
@@ -104,7 +109,7 @@ int main(int argc, const char * argv[]) {
 
     cout << "5. Quelles routes doivent etre renovees ? Quel sera le cout de la renovation de ces routes ?" << endl;
     
-    ReseauLeMoinsCher(rn);
+    ReseauLeMoinsCher(rn);*/
     
     return EXIT_SUCCESS;
 }

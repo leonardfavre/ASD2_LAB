@@ -8,6 +8,8 @@
       <itemPath>EdgeWeightedGraph.h</itemPath>
       <itemPath>EdgeWeightedGraphCommon.h</itemPath>
       <itemPath>MinimumSpanningTree.h</itemPath>
+      <itemPath>RoadDiGraphWrapper.h</itemPath>
+      <itemPath>RoadGraphWrapper.h</itemPath>
       <itemPath>RoadNetwork.h</itemPath>
       <itemPath>ShortestPath.h</itemPath>
       <itemPath>UnionFind.h</itemPath>
@@ -61,6 +63,10 @@
       </item>
       <item path="MinimumSpanningTree.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="RoadDiGraphWrapper.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RoadGraphWrapper.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="RoadNetwork.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="RoadNetwork.h" ex="false" tool="3" flavor2="0">
@@ -106,6 +112,10 @@
       <item path="EdgeWeightedGraphCommon.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="MinimumSpanningTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RoadDiGraphWrapper.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RoadGraphWrapper.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="RoadNetwork.cpp" ex="false" tool="1" flavor2="0">
       </item>

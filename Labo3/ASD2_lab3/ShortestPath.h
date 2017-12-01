@@ -13,7 +13,8 @@
 #include <vector>
 #include <set>
 #include <functional>
-
+#include <list>
+#include <limits>
 
 // Classe parente de toutes les classes de plus court chemin.
 // Defini les membres edgeTo et distanceTo commun à toutes ces
@@ -51,9 +52,21 @@ public:
 	
 	// Renvoie la liste ordonnee des arcs constituant un chemin le plus court du
 	// sommet source à v.
-	Edges PathTo(int v) {
-		/* A IMPLEMENTER */
-	}
+	Edges PathTo(int v){
+            //vecteur a retourner
+            Edges listeOrdonnee;
+
+            Edge edge = edgeTo.at(v);
+
+            while(edge.From() != edge.To()){
+                listeOrdonnee.push_back(edge);
+                edge = edgeTo.at(edge.From());
+            }
+
+            std::reverse(listeOrdonnee.begin(), listeOrdonnee.end()); 
+
+            return listeOrdonnee;
+          }
 
 protected:
 	Edges edgeTo;
@@ -70,8 +83,44 @@ public:
 	typedef typename BASE::Weight Weight;
 
 	DijkstraSP(const GraphType& g, int v)  {
-		/* A IMPLEMENTER */
-	}
+  /* A IMPLEMENTER */
+            std::list<int> q;
+            
+            q.resize(g.V());
+            
+            this->edgeTo.resize(g.V());
+            this->distanceTo.assign(g.V(), (int)std::numeric_limits<Weight>::max());
+
+            this->edgeTo[v] = Edge(v,v,0);
+            this->distanceTo[v] = 0;            
+           
+            
+            while (!q.empty()) {
+                int v = closestVertex(this->distanceTo);
+                q.remove(v);
+                g.forEachAdjacentEdge(v, [&](const Edge& e) {
+                    int distThruE = this->distanceTo.at(v) + e.Weight();
+                    int w = e.To();
+                    if (distThruE < this->distanceTo.at(w)) {
+                        this->distanceTo.at(w) = distThruE;
+                        this->edgeTo.at(w) = e;
+                    }
+                });
+            }
+ }
+        
+private:
+    int closestVertex(std::vector<Weight> const& tab ) {
+        int distMin = (int)std::numeric_limits<Weight>::max();
+        int v = 0;
+        for (int i = 0; i < tab.size(); i++) {
+            if (tab.at(i) < distMin) {
+                distMin = tab.at(i);
+                v = i;
+            }
+        }
+        return v;
+    }
 };
 
 // Algorithme de BellmanFord.
