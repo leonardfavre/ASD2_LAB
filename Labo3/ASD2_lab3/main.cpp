@@ -13,6 +13,7 @@
 #include "RoadNetwork.h"
 #include "MinimumSpanningTree.h"
 #include "ShortestPath.h"
+#include<iomanip>
 
 #include "EdgeWeightedGraph.h"
 #include "EdgeWeightedDiGraph.h"
@@ -22,22 +23,70 @@
 
 using namespace std;
 
+#define VITESSE_AUTOROUTE 120.0
+#define VITESSE_ROUTE_PRINCIPALE 70.0
+#define RENOVATION_COUT_PAR_KM_AUTOROUTE 15.0  
+#define RENOVATION_COUT_PAR_KM_ROUTE 7.0
+
 //Les differentes "fonction de cout"
+double longueur(const RoadNetwork::Road &r){
+    return r.length;
+}
+
+double duree(const RoadNetwork::Road &r){
+    return (r.length * r.motorway.Value() / VITESSE_AUTOROUTE) + (r.length * (1 - r.motorway.Value()) / VITESSE_ROUTE_PRINCIPALE);
+}
+
+double prix(const RoadNetwork::Road &r) {
+    return (r.length * r.motorway.Value() * RENOVATION_COUT_PAR_KM_AUTOROUTE) + (r.length * (1 - r.motorway.Value()) * RENOVATION_COUT_PAR_KM_ROUTE);
+}
 
 
 // Calcule et affiche le plus court chemin de la ville depart a la ville arrivee
 // en passant par le reseau routier rn. Le critere a optimiser est la distance.
-void PlusCourtChemin(const string& depart, const string& arrivee, RoadNetwork& rn) {   
+void PlusCourtChemin(const string& lieuDepart, const string& lieuArrivee, RoadNetwork& rn) {   
     /* A IMPLEMENTER */
-       
+    int depart = rn.cityIdx.at(lieuDepart);
+    int destination = rn.cityIdx.at(lieuArrivee);
+   
+    RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)> diGraphWrappe(rn, longueur);
+   
+    DijkstraSP<RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)>> plusCourtDijkstra(diGraphWrappe, depart);
+   
+    cout << lieuDepart << " - " << lieuArrivee << " : " << plusCourtDijkstra.DistanceTo(destination) << " KM\n";
+    cout << "Routes traversees : ";
+    
+    for(WeightedDirectedEdge<double> e : plusCourtDijkstra.PathTo(destination)){
+        cout << rn.cities.at(e.From()).name << " -> ";
+    }
+    cout << lieuArrivee << "\n---------------------" << endl;
 }
-
+       
 // Calcule et affiche le plus rapide chemin de la ville depart a la ville arrivee via la ville "via"
 // en passant par le reseau routier rn. Le critere a optimiser est le temps de parcours
 // sachant que l'on roule a 120km/h sur autoroute et 70km/h sur route normale.
 
 void PlusRapideChemin(const string& depart, const string& arrivee, const string& via, RoadNetwork& rn) {
     /* A IMPLEMENTER */
+    const int idDep = rn.cityIdx.at(depart);
+    const int idArr = rn.cityIdx.at(arrivee);
+    const int idVia = rn.cityIdx.at(via);
+    
+    RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)> diGraphWrappe(rn, duree);
+    DijkstraSP<RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)>> plusCourtDijkstra1(diGraphWrappe, idDep);
+    
+    DijkstraSP<RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)>> plusCourtDijkstra2(diGraphWrappe, idVia);
+    
+    cout << "Temps entre " << depart << " et " << arrivee << " via " << via << " : " << plusCourtDijkstra1.DistanceTo(idVia) + plusCourtDijkstra2.DistanceTo(idArr) << " heures\n";
+    cout << "Itineraire: ";
+    
+    for(WeightedDirectedEdge<double> e : plusCourtDijkstra1.PathTo(idVia)){
+        cout << rn.cities.at(e.From()).name << " -> ";
+    }
+    for(WeightedDirectedEdge<double> e : plusCourtDijkstra2.PathTo(idArr)){
+        cout << rn.cities.at(e.From()).name << " -> ";
+    }
+    cout << arrivee << "\n---------------------" << endl;
 }
 
 // Calcule et affiche le plus reseau a renover couvrant toutes les villes le moins
@@ -46,6 +95,17 @@ void PlusRapideChemin(const string& depart, const string& arrivee, const string&
 
 void ReseauLeMoinsCher(RoadNetwork &rn) {
     /* A IMPLEMENTER */
+    RoadGraphWrapper<double (*)(const RoadNetwork::Road&)> graphWrappe(rn, prix);
+    
+    std::vector<WeightedEdge<double>> minSpaTree = MinimumSpanningTree<RoadGraphWrapper<double (*)(const RoadNetwork::Road&)>>::Kruskal(graphWrappe);
+    
+    double prix = 0;
+    for(WeightedEdge<double> e : minSpaTree){
+        std::cout << "- " << setw(20) << rn.cities.at(e.Either()).name << " - " << setw(20) <<  rn.cities.at(e.Other(e.Either())).name << " : " << e.Weight() << " Millions CHF" << std::endl;
+        prix += e.Weight();
+    }
+    
+    std::cout << "Cout total : " << prix << "\n---------------------" << endl;
 }
 
 // compare les algorithmes Dijkstra et BellmanFord pour calculer les plus courts chemins au
@@ -84,12 +144,12 @@ void testShortestPath(string filename)
 
 int main(int argc, const char * argv[]) {
     
-    testShortestPath("tinyEWD.txt");
+    //testShortestPath("tinyEWD.txt");
     //testShortestPath("mediumEWD.txt");
-    //testShortestPath("1000EWD.txt");
+    testShortestPath("1000EWD.txt");
     //testShortestPath("10000EWD.txt");
     
-   /* RoadNetwork rn("reseau.txt");
+    RoadNetwork rn("reseau.txt");
     
     cout << "1. Chemin le plus court entre Geneve et Emmen" << endl;
     
@@ -109,7 +169,7 @@ int main(int argc, const char * argv[]) {
 
     cout << "5. Quelles routes doivent etre renovees ? Quel sera le cout de la renovation de ces routes ?" << endl;
     
-    ReseauLeMoinsCher(rn);*/
+    ReseauLeMoinsCher(rn);
     
     return EXIT_SUCCESS;
 }

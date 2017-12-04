@@ -14,7 +14,8 @@
 #include <set>
 #include <functional>
 #include <list>
-#include <limits>
+#include <iostream>
+#include <cstdlib>
 
 // Classe parente de toutes les classes de plus court chemin.
 // Defini les membres edgeTo et distanceTo commun à toutes ces
@@ -83,39 +84,46 @@ public:
 	typedef typename BASE::Weight Weight;
 
 	DijkstraSP(const GraphType& g, int v)  {
-  /* A IMPLEMENTER */
+  /* A ETE IMPLEMENTE */
             std::list<int> q;
+                        
+            int u = v;
             
-            q.resize(g.V());
-            
+            this->distanceTo.resize(g.V());
             this->edgeTo.resize(g.V());
-            this->distanceTo.assign(g.V(), (int)std::numeric_limits<Weight>::max());
-
-            this->edgeTo[v] = Edge(v,v,0);
-            this->distanceTo[v] = 0;            
-           
+            this->distanceTo[u] = 0;
             
+            g.forEachVertex([&](int v) {
+                if (v != u) {
+                    this->distanceTo[v] = std::numeric_limits<Weight>::max();
+                }
+                q.push_back(v);
+            });
+           
             while (!q.empty()) {
-                int v = closestVertex(this->distanceTo);
-                q.remove(v);
+                int v = closestVertex(this->distanceTo, q);
+                
+                q.remove_if([&](int x) { return x == v; });
+                
                 g.forEachAdjacentEdge(v, [&](const Edge& e) {
-                    int distThruE = this->distanceTo.at(v) + e.Weight();
-                    int w = e.To();
-                    if (distThruE < this->distanceTo.at(w)) {
-                        this->distanceTo.at(w) = distThruE;
-                        this->edgeTo.at(w) = e;
+                    auto distThruE = this->distanceTo[v] + e.Weight();
+                    auto w = e.To();
+                    if (distThruE < this->distanceTo[w]) {
+                        this->distanceTo[w] = distThruE;
+                        this->edgeTo[w] = e;
                     }
                 });
             }
  }
         
 private:
-    int closestVertex(std::vector<Weight> const& tab ) {
-        int distMin = (int)std::numeric_limits<Weight>::max();
-        int v = 0;
-        for (int i = 0; i < tab.size(); i++) {
-            if (tab.at(i) < distMin) {
-                distMin = tab.at(i);
+    int closestVertex(std::vector<Weight> const& distTo, std::list<int> q ) {
+        auto distMin = std::numeric_limits<Weight>::max();
+        int v = q.front();
+
+        for (int i : q) {
+            if (distTo[i] < distMin) {
+                distMin = distTo[i];
                 v = i;
             }
         }

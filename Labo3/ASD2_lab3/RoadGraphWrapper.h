@@ -14,6 +14,8 @@
 #ifndef ROADGRAPHWRAPPER_H
 #define ROADGRAPHWRAPPER_H
 
+using namespace std;
+
 template <typename Fonction>
 class RoadGraphWrapper {
 private:
@@ -23,7 +25,6 @@ private:
 public:
     typedef WeightedEdge<double> Edge;
     
-    // Constructeur du wrapper
     RoadGraphWrapper(const RoadNetwork& rn, Fonction fonction): rn(rn), coutCalcul(fonction){}
     
     // nombre de sommet du graph
