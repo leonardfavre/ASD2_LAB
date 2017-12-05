@@ -1,7 +1,7 @@
 /* 
  * File:   KruskalMST.h
  * Author: Olivier Cuisenaire
- *
+ * 
  * Created on 27. octobre 2014, 14:58
  */
 

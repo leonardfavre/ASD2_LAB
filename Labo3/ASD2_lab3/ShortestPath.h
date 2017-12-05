@@ -1,7 +1,7 @@
 /* 
  * File:   ShortestPath.h
  * Author: Olivier Cuisenaire
- *
+ * Modified by: Leonard Favre, Guillaume Schranz, Matthieu Girard
  * Created on 5. novembre 2014, 10:16
  */
 

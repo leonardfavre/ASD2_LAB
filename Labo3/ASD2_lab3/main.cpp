@@ -2,7 +2,7 @@
  * File:   main.cpp
  * ASD 2 - Labo 3
  * Author: Olivier Cuisenaire
- *
+ * Modified by: Leonard Favre, Guillaume Schranz, Matthieu Girard
  * Created on 18. novembre 2014, 14:58
  */
 

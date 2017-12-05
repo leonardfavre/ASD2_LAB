@@ -1,7 +1,7 @@
 /* 
  * File:   RoadNetwork.cpp
  * Author: Olivier Cuisenaire
- *
+ * Modified by: Leonard Favre, Guillaume Schranz, Matthieu Girard
  * Created on 18. novembre 2014, 10:48
  */
 

@@ -6,8 +6,8 @@
 
 /* 
  * File:   RoadDiGraphWrapper.h
- * Author: guill
- *
+ * Author: Leonard Favre, Guillaume Schranz, Matthieu Girard
+ * Modified by: Leonard Favre, Guillaume Schranz, Matthieu Girard
  * Created on 30. novembre 2017, 13:38
  */
 
