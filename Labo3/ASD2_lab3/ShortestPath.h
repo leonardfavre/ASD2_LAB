@@ -83,11 +83,13 @@ public:
 	typedef typename BASE::Edge Edge;
 	typedef typename BASE::Weight Weight;
 
+        // Retourne le chemin le plus court à chaque sommet du graphe, depuis le sommet v
+        // Utilise l'algorithme du cours, avec une simple liste pour contenir les sommets
 	DijkstraSP(const GraphType& g, int v)  {
   /* A ETE IMPLEMENTE */
             std::list<int> q;
                         
-            int u = v;
+            int u = v; // Pour une meilleure lisibilité vis-à-vis du cours
             
             this->distanceTo.resize(g.V());
             this->edgeTo.resize(g.V());
@@ -103,7 +105,7 @@ public:
             while (!q.empty()) {
                 int v = closestVertex(this->distanceTo, q);
                 
-                q.remove_if([&](int x) { return x == v; });
+                q.remove_if([&](int x) { return x == v; }); // On retire le sommet v de la liste
                 
                 g.forEachAdjacentEdge(v, [&](const Edge& e) {
                     auto distThruE = this->distanceTo[v] + e.Weight();
@@ -117,6 +119,8 @@ public:
  }
         
 private:
+    // méthode qui retourne le sommet de Q qui le plus proche
+    // v = min(distTo[v])
     int closestVertex(std::vector<Weight> const& distTo, std::list<int> q ) {
         auto distMin = std::numeric_limits<Weight>::max();
         int v = q.front();

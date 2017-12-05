@@ -24,11 +24,12 @@ class RoadDiGraphWrapper {
 private:
     RoadNetwork rn;
     Fonction coutCalcul; 
+    bool isPlusCourt;
     
 public:
     typedef WeightedDirectedEdge<double> Edge;
     
-    RoadDiGraphWrapper(RoadNetwork& rn, Fonction f): rn(rn), coutCalcul(f){}
+    RoadDiGraphWrapper(RoadNetwork& rn, Fonction f, bool isPlusCourt): rn(rn), coutCalcul(f), isPlusCourt(isPlusCourt){}
     
     //nombre de sommet
     int V() const {
@@ -37,11 +38,16 @@ public:
     
     //applique une fonction à toutes les arretes adjacentes à arrete
     template<typename Func>
-    void forEachAdjacentEdge(int arrete, Func fonction) const{ 
-        //cout << arrete << " " << rn.cities.at(arrete).name << endl;
-        for(int noRoute : rn.cities.at(arrete).roads){
-            RoadNetwork::Road road = rn.roads.at(noRoute);
-            fonction(WeightedDirectedEdge<double>(road.cities.first,road.cities.second,coutCalcul(road)));   
+    void forEachAdjacentEdge(int depart, Func fonction) const{ 
+        std::vector<int> e = rn.cities.at(depart).roads;
+        for (int i = 0; i < e.size(); i++) {
+            std::pair<int, int> p = rn.roads.at(e.at(i)).cities;
+            int arrivee = (p.first == depart ? p.second:p.first);
+            
+            if (isPlusCourt)
+                fonction(WeightedDirectedEdge<double>(depart,arrivee,rn.roads.at(e.at(i)).length));
+            else
+                fonction(WeightedDirectedEdge<double>(depart,arrivee,coutCalcul(rn.roads.at(i))));
         }
     };
     
@@ -57,4 +63,3 @@ public:
 
 
 #endif /* ROADDIGRAPHWRAPPER_H */
-

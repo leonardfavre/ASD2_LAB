@@ -45,11 +45,11 @@ double prix(const RoadNetwork::Road &r) {
 // Calcule et affiche le plus court chemin de la ville depart a la ville arrivee
 // en passant par le reseau routier rn. Le critere a optimiser est la distance.
 void PlusCourtChemin(const string& lieuDepart, const string& lieuArrivee, RoadNetwork& rn) {   
-    /* A IMPLEMENTER */
+    /* A ETE IMPLEMENTE */
     int depart = rn.cityIdx.at(lieuDepart);
     int destination = rn.cityIdx.at(lieuArrivee);
    
-    RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)> diGraphWrappe(rn, longueur);
+    RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)> diGraphWrappe(rn, longueur, true);
    
     DijkstraSP<RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)>> plusCourtDijkstra(diGraphWrappe, depart);
    
@@ -67,12 +67,12 @@ void PlusCourtChemin(const string& lieuDepart, const string& lieuArrivee, RoadNe
 // sachant que l'on roule a 120km/h sur autoroute et 70km/h sur route normale.
 
 void PlusRapideChemin(const string& depart, const string& arrivee, const string& via, RoadNetwork& rn) {
-    /* A IMPLEMENTER */
+    /* A ETE IMPLEMENTE */
     const int idDep = rn.cityIdx.at(depart);
     const int idArr = rn.cityIdx.at(arrivee);
     const int idVia = rn.cityIdx.at(via);
     
-    RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)> diGraphWrappe(rn, duree);
+    RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)> diGraphWrappe(rn, duree, false);
     DijkstraSP<RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)>> plusCourtDijkstra1(diGraphWrappe, idDep);
     
     DijkstraSP<RoadDiGraphWrapper<double (*)(const RoadNetwork::Road&)>> plusCourtDijkstra2(diGraphWrappe, idVia);
@@ -94,7 +94,7 @@ void PlusRapideChemin(const string& depart, const string& arrivee, const string&
 // coute 7 MF.
 
 void ReseauLeMoinsCher(RoadNetwork &rn) {
-    /* A IMPLEMENTER */
+    /* A ETE IMPLEMENTE */
     RoadGraphWrapper<double (*)(const RoadNetwork::Road&)> graphWrappe(rn, prix);
     
     std::vector<WeightedEdge<double>> minSpaTree = MinimumSpanningTree<RoadGraphWrapper<double (*)(const RoadNetwork::Road&)>>::Kruskal(graphWrappe);
@@ -105,7 +105,7 @@ void ReseauLeMoinsCher(RoadNetwork &rn) {
         prix += e.Weight();
     }
     
-    std::cout << "Cout total : " << prix << "\n---------------------" << endl;
+    std::cout << "Cout total : " << prix << " mio \n---------------------" << endl;
 }
 
 // compare les algorithmes Dijkstra et BellmanFord pour calculer les plus courts chemins au
@@ -144,10 +144,10 @@ void testShortestPath(string filename)
 
 int main(int argc, const char * argv[]) {
     
-    //testShortestPath("tinyEWD.txt");
-    //testShortestPath("mediumEWD.txt");
+    testShortestPath("tinyEWD.txt");
+    testShortestPath("mediumEWD.txt");
     testShortestPath("1000EWD.txt");
-    //testShortestPath("10000EWD.txt");
+    testShortestPath("10000EWD.txt");
     
     RoadNetwork rn("reseau.txt");
     
