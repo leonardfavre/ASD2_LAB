@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="ASD2_lab4" displayName="ASD2_lab4" projectFiles="true">
+      <logicalFolder name="libs" displayName="libs" projectFiles="true">
+        <itemPath>libs/byteswap.h</itemPath>
+        <itemPath>libs/city.cc</itemPath>
+        <itemPath>libs/city.h</itemPath>
+        <itemPath>libs/cityconfig.h</itemPath>
+        <itemPath>libs/sha256.cpp</itemPath>
+        <itemPath>libs/sha256.h</itemPath>
+      </logicalFolder>
+      <itemPath>Config.h</itemPath>
+      <itemPath>DirectoryCity.cpp</itemPath>
+      <itemPath>DirectoryCity.h</itemPath>
+      <itemPath>DirectoryInt.cpp</itemPath>
+      <itemPath>DirectoryInt.h</itemPath>
+      <itemPath>DirectoryLong.cpp</itemPath>
+      <itemPath>DirectoryLong.h</itemPath>
+      <itemPath>DirectoryPol.h</itemPath>
+      <itemPath>DirectorySha256.cpp</itemPath>
+      <itemPath>DirectorySha256.h</itemPath>
+      <itemPath>DirectoryStl.cpp</itemPath>
+      <itemPath>DirectoryStl.h</itemPath>
+      <itemPath>DirectoryWithoutAVS.cpp</itemPath>
+      <itemPath>DirectoryWithoutAVS.h</itemPath>
+      <itemPath>HashTableTester.h</itemPath>
+      <itemPath>Makefile</itemPath>
+      <itemPath>Util.cpp</itemPath>
+      <itemPath>Util.h</itemPath>
+      <itemPath>liste1.txt</itemPath>
+      <itemPath>liste2.txt</itemPath>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
+      </compileType>
+      <item path="Config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryCity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryCity.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryInt.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryInt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryLong.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryLong.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryPol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectorySha256.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectorySha256.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryStl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryStl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryWithoutAVS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryWithoutAVS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HashTableTester.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="libs/byteswap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="libs/city.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="libs/city.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="libs/cityconfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="libs/sha256.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="libs/sha256.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="liste1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="liste2.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="Config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryCity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryCity.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryInt.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryInt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryLong.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryLong.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryPol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectorySha256.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectorySha256.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryStl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryStl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DirectoryWithoutAVS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DirectoryWithoutAVS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HashTableTester.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="libs/byteswap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="libs/city.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="libs/city.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="libs/cityconfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="libs/sha256.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="libs/sha256.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="liste1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="liste2.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
