@@ -20,6 +20,7 @@
 #include <chrono>
 #include <ctime>
 #include <ratio>
+#include <vector>
 
 using namespace std;
 using namespace chrono;
@@ -27,11 +28,20 @@ using namespace chrono;
 
 //REFLECHIR PRIVATE PUBLIC AUSSI
 
-template <typename type>
+template <typename T>
 class Correcteur {
 private:
-    type dictionnaire;    
-
+    T dictionnaire;    
+        
+/*    vector<string> lettreSupp(const string &word);
+    vector<string> missedChar(const string &word);
+    vector<string> misstyped(const string &word);
+    vector<string> lettersSwapped(const string &word);*/
+    
+    void lettreSupp(vector<string> &props, const string &word);
+    void missedChar(vector<string> &props, const string &word);
+    void misstyped(vector<string> &props, const string &word);
+    void lettersSwapped(vector<string> &props, const string &word);    
     
 //Constructeur
 public:
@@ -99,6 +109,14 @@ public:
                 //AJOUTER ICI LES APPELLES DES FCT DE CORRECTIONS
                 ///////////////////////////////////////////////
                 //////////////////////////////////////////////////
+                vector<string> props;
+                lettreSupp(props, motFormate);
+                missedChar(props, motFormate);
+                misstyped(props, motFormate);
+                lettersSwapped(props, motFormate);
+                
+                for (int i = 0; i < props.size(); i++)
+                    corrections << i << props[i] << endl;
             }
         }
         fichier.close();

@@ -19,14 +19,14 @@ private:
     
     
     struct Node {
-    //public:
         unsigned val;
         char c;
+        bool derniereLettre;
         Node* left;
         Node* mid;
         Node* right;
         Node(){};
-        Node(char c, unsigned val) : c(c), val(val), right(nullptr), mid(nullptr), left(nullptr) { }
+        Node(char c, unsigned val) : c(c), val(val), derniereLettre(false), right(nullptr), mid(nullptr), left(nullptr) { }
     };
     Node* root;
     
@@ -37,19 +37,16 @@ private:
             x = new Node(c, val);
         }
         
-        //if ou else if
-        
         if (c < x->c)                   {x->left  = put(x->left, key, val, d);}
         else if (c > x->c)              {x->right = put(x->right, key, val, d);}
         else if (d < key.length() - 1)  {x->mid   = put(x->mid, key, val, d + 1);}
-        else                            {x->val  = val;}
+        else                            {x->derniereLettre  = val;}
         return x;
     }
     
     Node* get(Node* x, string key, int d) {
         if (x == nullptr)               return nullptr;
         char c = key.at(d);
-        //cout << "d = " << d << "<<-----" << endl;
         if (c < x->c)                   return get(x->left, key, d);
         else if (c > x->c)              return get(x->right, key, d);
         else if (d < key.length() - 1)  return get(x->mid, key, d + 1);
@@ -57,7 +54,6 @@ private:
     }
     
 public:
-    //public:
     void put(string key, unsigned val) {
         root = put(root, key, val, 0);
     }
@@ -68,9 +64,8 @@ public:
     
     unsigned get(string key) {
         Node* x = get(root, key, 0);
-        if (x == nullptr) return NULL;
-       // cout << key << "     " << x->val << endl;
-        return x->val;
+        
+        return !(x == nullptr || x->derniereLettre != true);
     }
     
     TernarySearchTries() : root(nullptr) { }
