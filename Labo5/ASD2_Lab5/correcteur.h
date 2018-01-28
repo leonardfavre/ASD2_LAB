@@ -38,10 +38,60 @@ private:
     vector<string> misstyped(const string &word);
     vector<string> lettersSwapped(const string &word);*/
     
-    void lettreSupp(vector<string> &props, const string &word);
-    void missedChar(vector<string> &props, const string &word);
-    void misstyped(vector<string> &props, const string &word);
-    void lettersSwapped(vector<string> &props, const string &word);    
+void lettreSupp(vector<string> &props, const string &word) {
+    for (int i = 0; i < word.length(); i++) {
+        string w = word;
+        w.erase(i, 1);
+        if (dictionnaire.contains(w))
+            props.push_back(w);
+    }
+}
+
+void missedChar(vector<string> &props, const string &word) {    
+    for (int i = 1; i <= word.size() + 1; i++) {
+        // On split le mot en 2, à chaque interval de lettre
+        string pre = word.substr(0, i);
+        //cout << "pre: " << pre << endl;
+        string post;
+        if (i < word.size() + 1)
+            post = word.substr(i, word.size() - i);
+        //cout << "post: " << post << endl;
+        for (char c = 'c'; c <= 'z'; c++) {
+            string prop = pre + c + post;
+            if (dictionnaire.contains(prop))
+                props.push_back(prop);
+        }
+    }   
+}
+
+void misstyped(vector<string> &props, const string &word) {    
+    for (int i = 0; i < word.size(); i++) {
+        string prop = word;
+        for (char c = 'a'; c <= 'z'; c++) {
+            prop.replace(i, 1, 1, c);
+            //cout << prop << endl;
+            if (dictionnaire.contains(prop))
+                props.push_back(prop);
+        }
+    }
+}
+
+void lettersSwapped(vector<string> &props, const string &word) {    
+    for (int i = 0; i < word.size() - 1; i++) {
+        char c1 = word.at(i);
+        char c2 = word.at(i + 1);
+        
+        string pre = word.substr(0, i);
+        string post;
+        if (i < word.size() - 2)
+            post = word.substr(i + 2, word.size() - 1);
+                
+        //cout << pre + c2 + c1 + post << endl;
+        string prop = pre + c2 + c1 + post;
+        if (dictionnaire.contains(prop))
+            props.push_back(prop);
+    }
+}   
     
 //Constructeur
 public:
@@ -111,12 +161,20 @@ public:
                 //////////////////////////////////////////////////
                 vector<string> props;
                 lettreSupp(props, motFormate);
-                missedChar(props, motFormate);
-                misstyped(props, motFormate);
-                lettersSwapped(props, motFormate);
-                
                 for (int i = 0; i < props.size(); i++)
-                    corrections << i << props[i] << endl;
+                    corrections << "1:" << props[i] << endl;  
+                props.clear();
+                missedChar(props, motFormate);
+                for (int i = 0; i < props.size(); i++)
+                    corrections << "2:" << props[i] << endl; 
+                props.clear();
+                misstyped(props, motFormate);
+                for (int i = 0; i < props.size(); i++)
+                    corrections << "3:" << props[i] << endl; 
+                props.clear();
+                lettersSwapped(props, motFormate);
+                for (int i = 0; i < props.size(); i++)
+                    corrections << "4:" << props[i] << endl;
             }
         }
         fichier.close();

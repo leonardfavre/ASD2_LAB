@@ -21,7 +21,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>correcteur.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -60,8 +59,6 @@
       </item>
       <item path="TernarySearchTries.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="correcteur.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="correcteur.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="dictionnaireSet.h" ex="false" tool="3" flavor2="0">
@@ -99,8 +96,6 @@
       <item path="Makefile" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TernarySearchTries.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="correcteur.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="correcteur.h" ex="false" tool="3" flavor2="0">
       </item>

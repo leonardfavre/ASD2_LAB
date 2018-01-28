@@ -17,6 +17,7 @@
 #include "correcteur.h"
 #include "TernarySearchTries.h"
 #include "dictionnaireTST.h"
+#include "dictionnaireSet.h"
 
 using namespace std;
 

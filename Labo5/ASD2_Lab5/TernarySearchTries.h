@@ -68,13 +68,7 @@ public:
         return !(x == nullptr || x->derniereLettre != true);
     }
     
-    TernarySearchTries() : root(nullptr) { }
-    
-
-    
-
-    
-
+    TernarySearchTries() : root(nullptr) { } 
 }; 
 
 #endif /* TERNARYSEARCHTRIES_H */

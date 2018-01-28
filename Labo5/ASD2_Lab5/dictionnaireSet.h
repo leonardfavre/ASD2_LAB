@@ -34,8 +34,8 @@ public:
         dico.insert(nouveauMot);
     }
     bool contains(string& mot){
-        unordered_set<string>::const_iterator got = set.find(mot);
-        return got != set.end();
+        unordered_set<string>::const_iterator got = dico.find(mot);
+        return got != dico.end();
     }
 };
 
